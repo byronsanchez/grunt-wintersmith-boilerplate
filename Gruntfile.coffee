@@ -48,7 +48,7 @@ module.exports = (grunt) ->
 
         files:
           "app/contents/js/test.js": "app/coffee/test.coffee" # 1:1 compile
-          "app/contents/js/test2.js": ["app/coffee/*.coffee"] # compile and concat into single file
+          "app/contents/js/application.js": ["app/coffee/*.coffee"] # compile and concat into single file
 
     # Concatenation
     concat:
@@ -63,7 +63,7 @@ module.exports = (grunt) ->
         
         ]
         
-        dest: "app/contents/js/vendor.js"
+        dest: "app/contents/js/library.js"
 
     # Watch
     watch:

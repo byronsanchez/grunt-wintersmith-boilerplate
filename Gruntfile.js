@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         },
         files: {
           "app/contents/js/test.js": "app/coffee/test.coffee",
-          "app/contents/js/test2.js": ["app/coffee/*.coffee"]
+          "app/contents/js/application.js": ["app/coffee/*.coffee"]
         }
       }
     },
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
       },
       prod: {
         src: ["app/bower_components/jquery/jquery.min.js"],
-        dest: "app/contents/js/vendor.js"
+        dest: "app/contents/js/library.js"
       }
     },
     watch: {
