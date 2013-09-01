@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           style: "compressed"
         },
         expand: true,
-        cwd: "sass/",
+        cwd: "app/sass/",
         src: ["styles.scss"],
         dest: "app/contents/css/",
         ext: ".css"
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
           lineNumbers: true
         },
         expand: true,
-        cwd: "sass/",
+        cwd: "app/sass/",
         src: ["styles.scss"],
         dest: "app/contents/css/",
         ext: ".css"
@@ -29,8 +29,8 @@ module.exports = function(grunt) {
     coffee: {
       compile: {
         files: {
-          'app/contents/js/test.js': 'coffee/test.coffee',
-          'app/contents/js/test2.js': ['coffee/*.coffee']
+          'app/contents/js/test.js': 'app/coffee/test.coffee',
+          'app/contents/js/test2.js': ['app/coffee/*.coffee']
         }
       },
       join: {
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
           join: true
         },
         files: {
-          "app/contents/js/test.js": "coffee/test.coffee",
-          "app/contents/js/test2.js": ["coffee/*.coffee"]
+          "app/contents/js/test.js": "app/coffee/test.coffee",
+          "app/contents/js/test2.js": ["app/coffee/*.coffee"]
         }
       }
     },
@@ -47,9 +47,9 @@ module.exports = function(grunt) {
       options: {
         separator: ";"
       },
-      dist: {
-        src: ["src/intro.js", "src/project.js", "src/outro.js"],
-        dest: "dist/built.js"
+      prod: {
+        src: ["app/bower_components/jquery/jquery.min.js"],
+        dest: "app/contents/js/vendor.js"
       }
     },
     watch: {

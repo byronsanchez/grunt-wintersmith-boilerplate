@@ -15,7 +15,7 @@ module.exports = (grunt) ->
 
         # require: ['./sass/helpers/url64.rb']
         expand: true
-        cwd: "sass/"
+        cwd: "app/sass/"
         src: ["styles.scss"]
         dest: "app/contents/css/"
         ext: ".css"
@@ -29,7 +29,7 @@ module.exports = (grunt) ->
         
         # require: ['/sass/helpers/url64.rb']
         expand: true
-        cwd: "sass/"
+        cwd: "app/sass/"
         src: ["styles.scss"]
         dest: "app/contents/css/"
         ext: ".css"
@@ -39,25 +39,31 @@ module.exports = (grunt) ->
       
       compile: 
         files: 
-          'app/contents/js/test.js': 'coffee/test.coffee', # 1:1 compile
-          'app/contents/js/test2.js': ['coffee/*.coffee'] # compile and concat into single file
+          'app/contents/js/test.js': 'app/coffee/test.coffee', # 1:1 compile
+          'app/contents/js/test2.js': ['app/coffee/*.coffee'] # compile and concat into single file
 
       join:
         options:
           join: true
 
         files:
-          "app/contents/js/test.js": "coffee/test.coffee" # 1:1 compile
-          "app/contents/js/test2.js": ["coffee/*.coffee"] # compile and concat into single file
+          "app/contents/js/test.js": "app/coffee/test.coffee" # 1:1 compile
+          "app/contents/js/test2.js": ["app/coffee/*.coffee"] # compile and concat into single file
 
     # Concatenation
     concat:
       options:
         separator: ";"
 
-      dist:
-        src: ["src/intro.js", "src/project.js", "src/outro.js"]
-        dest: "dist/built.js"
+      prod:
+        src: [
+        
+          "app/bower_components/jquery/jquery.min.js"
+          # "app/bower_components/path/to/additional.js"
+        
+        ]
+        
+        dest: "app/contents/js/vendor.js"
 
     # Watch
     watch:

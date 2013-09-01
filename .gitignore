@@ -1,4 +1,5 @@
 .sass-cache
 node_modules
-app/build
-app/node_modules
+app/build/*
+app/node_modules/*
+app/bower_components/*
