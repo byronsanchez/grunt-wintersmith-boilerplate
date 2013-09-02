@@ -5,7 +5,24 @@ module.exports = (grunt) ->
     
     # Store your Package file so you can reference its specific data whenever necessary
     pkg: grunt.file.readJSON("package.json")
-      
+    
+    # Minify (Vendor) CSS
+    cssmin: 
+      normalize: 
+        
+        src: "bower_components/normalize-css/normalize.css"
+        
+        dest: "wintersmith/contents/css/normalize.min.css"
+
+    smushit: 
+    
+      build: 
+        src: [
+          'images/*.png',
+          'images/*.jpg'
+        ]
+        dest: 'wintersmith/contents/images'
+          
     # Sass 
     sass:
       build:
@@ -14,9 +31,9 @@ module.exports = (grunt) ->
 
         # require: ['./sass/helpers/url64.rb']
         expand: true
-        cwd: "app/sass/"
+        cwd: "sass/"
         src: ["styles.scss"]
-        dest: "app/contents/css/"
+        dest: "wintersmith/contents/css/"
         ext: ".css"
 
       preview:
@@ -28,34 +45,26 @@ module.exports = (grunt) ->
         
         # require: ['/sass/helpers/url64.rb']
         expand: true
-        cwd: "app/sass/"
+        cwd: "sass/"
         src: ["styles.scss"]
-        dest: "app/contents/css/"
+        dest: "wintersmith/contents/css/"
         ext: ".css"
 
     # Coffeescript
     coffee:
       # compile: 
       #   files: 
-      #     'app/contents/js/test.js': 'app/coffee/test.coffee', # 1:1 compile
-      #     'app/contents/js/test2.js': ['app/coffee/*.coffee'] # compile and concat into single file
+      #     'wintersmith/contents/js/test.js': 'coffee/test.coffee', # 1:1 compile
+      #     'wintersmith/contents/js/test2.js': ['coffee/*.coffee'] # compile and concat into single file
 
       join:
         options:
           join: true
 
         files:
-          # "app/contents/js/test.js": "app/coffee/test.coffee" # 1:1 compile
-          "app/contents/js/main.js": ["app/coffee/*.coffee"] # compile and concat into single file
+          # "wintersmith/contents/js/test.js": "coffee/test.coffee" # 1:1 compile
+          "wintersmith/contents/js/main.js": ["coffee/*.coffee"] # compile and concat into single file
     
-    # Minify CSS
-    cssmin: 
-        normalize: 
-          
-          src: "app/bower_components/normalize-css/normalize.css"
-          
-          dest: "app/contents/css/normalize.min.css"
-        
     # Concatenation
     concat:
       options:
@@ -63,11 +72,11 @@ module.exports = (grunt) ->
 
       libs:
         src: [
-          "app/bower_components/jquery/jquery.min.js"
-          # "app/bower_components/path/to/additional.js"
+          "bower_components/jquery/jquery.min.js"
+          # "bower_components/path/to/additional.js"
         ]
         
-        dest: "app/contents/js/libs.js"
+        dest: "wintersmith/contents/js/libs.js"
 
     # Watch
     watch:
@@ -88,18 +97,19 @@ module.exports = (grunt) ->
       build:
         options:
           action: "build"
-          config: "app/config-build.json"
+          config: "wintersmith/config-build.json"
 
       preview:
         options:
           action: "preview"
-          config: "app/config-preview.json"
+          config: "wintersmith/config-preview.json"
 
   
   # Load NPM Tasks
+  grunt.loadNpmTasks "grunt-css"
+  grunt.loadNpmTasks "grunt-smushit"
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-coffee"
-  grunt.loadNpmTasks "grunt-css"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-wintersmith"
