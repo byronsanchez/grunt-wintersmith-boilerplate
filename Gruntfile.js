@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
     smushit: {
       build: {
-        src: ['images/*.png', 'images/*.jpg'],
+        src: ["images/*.png", "images/*.jpg"],
         dest: 'wintersmith/contents/images'
       }
     },
@@ -60,16 +60,23 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      build: {
+      sass: {
         files: ["**/*.scss"],
-        tasks: ["sass:build"],
+        tasks: ["sass:preview"],
         options: {
           spawn: false
         }
       },
-      preview: {
-        files: ["**/*.scss"],
-        tasks: ["sass:preview"],
+      coffee: {
+        files: ["**/*.coffee"],
+        tasks: ["coffee:join"],
+        options: {
+          spawn: false
+        }
+      },
+      images: {
+        files: ["images/*.png", "images/*.jpg"],
+        tasks: ["shushit:build"],
         options: {
           spawn: false
         }
@@ -97,6 +104,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-wintersmith");
-  grunt.registerTask("preview", ["wintersmith:preview", "watch:preview", "coffee:join"]);
-  return grunt.registerTask("build", ["cssmin", "concat", "sass:build", "coffee:join", "wintersmith:build"]);
+  grunt.registerTask("preview", ["wintersmith:preview"]);
+  grunt.registerTask("watch", ["watch"]);
+  return grunt.registerTask("build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]);
 };
