@@ -8,8 +8,7 @@ module.exports = (grunt) ->
       
     # Sass 
     sass:
-      
-      prod:
+      build:
         options:
           style: "compressed"
 
@@ -20,7 +19,7 @@ module.exports = (grunt) ->
         dest: "app/contents/css/"
         ext: ".css"
 
-      dev:
+      preview:
         options:
           style: "expanded"
           debugInfo: true
@@ -36,47 +35,54 @@ module.exports = (grunt) ->
 
     # Coffeescript
     coffee:
-      
-      compile: 
-        files: 
-          'app/contents/js/test.js': 'app/coffee/test.coffee', # 1:1 compile
-          'app/contents/js/test2.js': ['app/coffee/*.coffee'] # compile and concat into single file
+      # compile: 
+      #   files: 
+      #     'app/contents/js/test.js': 'app/coffee/test.coffee', # 1:1 compile
+      #     'app/contents/js/test2.js': ['app/coffee/*.coffee'] # compile and concat into single file
 
       join:
         options:
           join: true
 
         files:
-          "app/contents/js/test.js": "app/coffee/test.coffee" # 1:1 compile
-          "app/contents/js/application.js": ["app/coffee/*.coffee"] # compile and concat into single file
+          # "app/contents/js/test.js": "app/coffee/test.coffee" # 1:1 compile
+          "app/contents/js/main.js": ["app/coffee/*.coffee"] # compile and concat into single file
+    
+    # Minify CSS
+    cssmin: 
+        normalize: 
+          
+          src: "app/bower_components/normalize-css/normalize.css"
+          
+          dest: "app/contents/css/normalize.min.css"
+        
+    
+
 
     # Concatenation
     concat:
       options:
         separator: ";"
 
-      prod:
+      libs:
         src: [
-        
           "app/bower_components/jquery/jquery.min.js"
           # "app/bower_components/path/to/additional.js"
-        
         ]
         
-        dest: "app/contents/js/library.js"
+        dest: "app/contents/js/libs.js"
 
     # Watch
     watch:
-      
-      prod:
+      build:
         files: ["**/*.scss"]
-        tasks: ["sass:prod"]
+        tasks: ["sass:build"]
         options:
           spawn: false
 
-      dev:
+      preview:
         files: ["**/*.scss"]
-        tasks: ["sass:dev"]
+        tasks: ["sass:preview"]
         options:
           spawn: false
     
@@ -84,30 +90,31 @@ module.exports = (grunt) ->
 
     # Wintersmith
     wintersmith:
-      prod:
+      build:
         options:
           action: "build"
-          config: "app/config-prod.json"
+          config: "app/config-build.json"
 
-      dev:
+      preview:
         options:
           action: "preview"
-          config: "app/config-dev.json"
+          config: "app/config-preview.json"
 
   
   # Load NPM Tasks
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-css"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
   # grunt.loadNpmTasks "grunt-contrib-imagemin"
   grunt.loadNpmTasks "grunt-wintersmith"
   
   # Default Task
-  # grunt.registerTask "default", ["sass:dev", "coffee:join"]
+  # grunt.registerTask "default", ["sass:preview", "coffee:join"]
   
   # Preview Task
-  grunt.registerTask "preview", ["watch:dev", "coffee:join", "wintersmith:dev"]
+  grunt.registerTask "preview", ["wintersmith:preview", "watch:preview", "coffee:join"]
   
   # Release Task
-  grunt.registerTask "prod", ["sass:prod", "coffee:join", "wintersmith:prod"]
+  grunt.registerTask "build", ["cssmin", "concat", "sass:build", "coffee:join", "wintersmith:build"]

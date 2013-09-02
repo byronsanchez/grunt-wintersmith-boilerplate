@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
     sass: {
-      prod: {
+      build: {
         options: {
           style: "compressed"
         },
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         dest: "app/contents/css/",
         ext: ".css"
       },
-      dev: {
+      preview: {
         options: {
           style: "expanded",
           debugInfo: true,
@@ -27,67 +27,67 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
-      compile: {
-        files: {
-          'app/contents/js/test.js': 'app/coffee/test.coffee',
-          'app/contents/js/test2.js': ['app/coffee/*.coffee']
-        }
-      },
       join: {
         options: {
           join: true
         },
         files: {
-          "app/contents/js/test.js": "app/coffee/test.coffee",
-          "app/contents/js/application.js": ["app/coffee/*.coffee"]
+          "app/contents/js/main.js": ["app/coffee/*.coffee"]
         }
+      }
+    },
+    cssmin: {
+      normalize: {
+        src: "app/bower_components/normalize-css/normalize.css",
+        dest: "app/contents/css/normalize.min.css"
       }
     },
     concat: {
       options: {
         separator: ";"
       },
-      prod: {
+      libs: {
         src: ["app/bower_components/jquery/jquery.min.js"],
-        dest: "app/contents/js/library.js"
+        dest: "app/contents/js/libs.js"
       }
     },
     watch: {
-      prod: {
+      build: {
         files: ["**/*.scss"],
-        tasks: ["sass:prod"],
+        tasks: ["sass:build"],
         options: {
           spawn: false
         }
       },
-      dev: {
+      preview: {
         files: ["**/*.scss"],
-        tasks: ["sass:dev"],
+        tasks: ["sass:preview"],
         options: {
           spawn: false
         }
       }
     },
     wintersmith: {
-      prod: {
+      build: {
         options: {
           action: "build",
-          config: "app/config-prod.json"
+          config: "app/config-build.json"
         }
       },
-      dev: {
+      preview: {
         options: {
           action: "preview",
-          config: "app/config-dev.json"
+          config: "app/config-preview.json"
         }
       }
     }
   });
   grunt.loadNpmTasks("grunt-contrib-sass");
   grunt.loadNpmTasks("grunt-contrib-coffee");
+  grunt.loadNpmTasks("grunt-css");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-wintersmith");
-  grunt.registerTask("preview", ["watch:dev", "coffee:join", "wintersmith:dev"]);
-  return grunt.registerTask("prod", ["sass:prod", "coffee:join", "wintersmith:prod"]);
+  grunt.registerTask("preview", ["wintersmith:preview", "watch:preview", "coffee:join"]);
+  return grunt.registerTask("build", ["cssmin", "concat", "sass:build", "coffee:join", "wintersmith:build"]);
 };
