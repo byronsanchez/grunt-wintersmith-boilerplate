@@ -19,6 +19,7 @@ module.exports = function(grunt) {
         options: {
           style: "compressed"
         },
+        require: ['sass/helpers/url64.rb'],
         expand: true,
         cwd: "sass/",
         src: ["styles.scss"],
@@ -31,6 +32,7 @@ module.exports = function(grunt) {
           debugInfo: true,
           lineNumbers: true
         },
+        require: ['sass/helpers/url64.rb'],
         expand: true,
         cwd: "sass/",
         src: ["styles.scss"],
