@@ -56,9 +56,6 @@ module.exports = (grunt) ->
           
           dest: "app/contents/css/normalize.min.css"
         
-    
-
-
     # Concatenation
     concat:
       options:
@@ -85,8 +82,6 @@ module.exports = (grunt) ->
         tasks: ["sass:preview"]
         options:
           spawn: false
-    
-    # Add Imagemin
 
     # Wintersmith
     wintersmith:
@@ -107,7 +102,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-css"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
-  # grunt.loadNpmTasks "grunt-contrib-imagemin"
   grunt.loadNpmTasks "grunt-wintersmith"
   
   # Default Task
