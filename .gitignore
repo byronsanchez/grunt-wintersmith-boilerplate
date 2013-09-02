@@ -1,5 +1,5 @@
 .sass-cache
-node_modules
-app/build/*
-app/node_modules/*
-app/bower_components/*
+node_modules/*
+bower_components/*
+wintersmith/build/*
+wintersmith/node_modules/*
