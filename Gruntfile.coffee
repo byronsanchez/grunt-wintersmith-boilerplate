@@ -109,12 +109,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-wintersmith"
+
   
   # Default Task
-  # grunt.registerTask "default", ["sass:preview", "coffee:join"]
+  # todo: run multiple continuos tasks
   
   # Preview Task
-  grunt.registerTask "preview", ["wintersmith:preview", "watch:sass", "watch:coffee", "watch:images"]
+  grunt.registerTask "preview", ["wintersmith:preview"]
   
   # Release Task
-  grunt.registerTask "build", ["cssmin", "concat", "smushit:build" "sass:build", "coffee:join", "wintersmith:build"]
+  grunt.registerTask "build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]

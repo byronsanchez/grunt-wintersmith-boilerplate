@@ -1,5 +1,9 @@
+.DS_Store
 .sass-cache
 node_modules/*
 bower_components/*
-wintersmith/build/*
 wintersmith/node_modules/*
+wintersmith/build/*
+wintersmith/contents/css
+wintersmith/contents/images
+wintersmith/contents/js
