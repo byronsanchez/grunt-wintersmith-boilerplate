@@ -122,4 +122,4 @@ module.exports = (grunt) ->
   grunt.registerTask "default", ["shell:preview"]
   
   # Release Task
-  grunt.registerTask "build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]
+  grunt.registerTask "build", ["cssmin", "smushit:build", "sass:build", "coffee:join", "concat", "wintersmith:build"]
