@@ -100,7 +100,13 @@ module.exports = (grunt) ->
           action: "preview"
           config: "wintersmith/config-preview.json"
 
-  
+    # Shell Commands
+    shell:                             
+      preview:                      
+        options:                      
+          stdout: true
+        command: ["grunt watch", "grunt wintersmith:preview"].join(" & ")
+ 
   # Load NPM Tasks
   grunt.loadNpmTasks "grunt-css"
   grunt.loadNpmTasks "grunt-smushit"
@@ -109,13 +115,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-wintersmith"
+  grunt.loadNpmTasks "grunt-shell"
 
   
-  # Default Task
-  # todo: run multiple continuos tasks
-  
-  # Preview Task
-  grunt.registerTask "preview", ["wintersmith:preview"]
+  # Default / Preview Task
+  grunt.registerTask "default", ["shell:preview"]
   
   # Release Task
   grunt.registerTask "build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]
