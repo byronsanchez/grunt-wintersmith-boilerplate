@@ -1,6 +1,9 @@
 $blue: #3bbfce;
 $margin: 16px;
 
+body {
+  color: $blue;
+}
 .content-navigation {
   border-color: $blue;
   color: darken($blue, 9%);
@@ -14,3 +17,4 @@ $margin: 16px;
   background: none;
   margin: 12em;
 }
+

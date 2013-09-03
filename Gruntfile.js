@@ -95,6 +95,14 @@ module.exports = function(grunt) {
           config: "wintersmith/config-preview.json"
         }
       }
+    },
+    shell: {
+      preview: {
+        options: {
+          stdout: true
+        },
+        command: ["grunt watch", "grunt wintersmith:preview"].join(" & ")
+      }
     }
   });
   grunt.loadNpmTasks("grunt-css");
@@ -104,6 +112,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-wintersmith");
-  grunt.registerTask("preview", ["wintersmith:preview"]);
+  grunt.loadNpmTasks("grunt-shell");
+  grunt.registerTask("default", ["shell:preview"]);
   return grunt.registerTask("build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]);
 };
