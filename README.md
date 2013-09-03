@@ -1,4 +1,8 @@
 grunt-wintersmith-boilerplate
 =============================
 
-Boilerplate Wintersmith app with simplified HTML5 boilerplate, Bower and Grunt.js 
+Boilerplate [Wintersmith](http://wintersmith.io/)html app with simplified [HTML5 boilerplate](http://html5boilerplate.com/), [Bower](http://bower.io/) and [Grunt.js](http://gruntjs.com/)
+
+"Feature branches" include additional packages/features
+
+- bourbon_neat: [Bourbon Neat](http://neat.bourbon.io/)
