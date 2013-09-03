@@ -114,5 +114,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-wintersmith");
   grunt.loadNpmTasks("grunt-shell");
   grunt.registerTask("default", ["shell:preview"]);
-  return grunt.registerTask("build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]);
+  return grunt.registerTask("build", ["cssmin", "smushit:build", "sass:build", "coffee:join", "concat", "wintersmith:build"]);
 };
