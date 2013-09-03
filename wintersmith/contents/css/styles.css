@@ -1,31 +1,31 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/app\/sass\/test\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/sass\/_test\.scss}line{font-family:\000034}}
 .content-navigation {
   border-color: #3bbfce;
   color: #2ca2af;
   background: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/app\/sass\/test\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/sass\/_test\.scss}line{font-family:\0000310}}
 .border {
   padding: 8px;
   margin: 8px;
   border-color: #3bbfce;
   background: none;
-  margin-top: 1em;
+  margin: 12em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/app\/sass\/test2\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/sass\/_test2\.scss}line{font-family:\000031}}
 table.hl {
   margin: 2em 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/app\/sass\/test2\.scss}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/sass\/_test2\.scss}line{font-family:\000033}}
 table.hl td.ln {
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/app\/sass\/test2\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/rhughes1\/Desktop\/grunt-wintersmith-boilerplate\/sass\/_test2\.scss}line{font-family:\000038}}
 li {
   font-family: serif;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }

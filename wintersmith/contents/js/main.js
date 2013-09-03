@@ -5,7 +5,8 @@
     return $.fn.highlight = function() {
       $(this).css({
         color: "red",
-        background: "yellow"
+        background: "yellow",
+        padding: "1em"
       });
       return $(this).fadeIn();
     };

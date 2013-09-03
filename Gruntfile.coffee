@@ -117,9 +117,5 @@ module.exports = (grunt) ->
   # Preview Task
   grunt.registerTask "preview", ["wintersmith:preview"]
   
-  # Preview Task
-  grunt.registerTask "watch", ["watch"]
-
-  
   # Release Task
   grunt.registerTask "build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]

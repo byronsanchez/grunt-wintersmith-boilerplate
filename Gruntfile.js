@@ -105,6 +105,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-wintersmith");
   grunt.registerTask("preview", ["wintersmith:preview"]);
-  grunt.registerTask("watch", ["watch"]);
   return grunt.registerTask("build", ["cssmin", "concat", "smushit:build", "sass:build", "coffee:join", "wintersmith:build"]);
 };
