@@ -10,6 +10,11 @@
   ],
   "dependencies": {
     "jquery": "git://github.com/components/jquery.git#1.10.2",
-    "normalize-css": "git://github.com/necolas/normalize.css.git#~2.1.3"
-  }
+    "normalize-css": "git://github.com/necolas/normalize.css.git#~2.1.3",
+    "backbone": "~1.0.0",
+    "modernizr": "~2.6.2",
+    "underscore": "~1.5.2"
+  },
+  "homepage": "https://github.com/propercursive/grunt-wintersmith-boilerplate",
+  "license": "MIT"
 }
