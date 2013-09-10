@@ -12,6 +12,15 @@ module.exports = (grunt) ->
         src: "bower_components/normalize-css/normalize.css"
         dest: "wintersmith/contents/css/normalize.min.css"
 
+    # Minify (Vendor) JS
+    uglify:
+      options:
+        mangle: false
+      my_target: 
+        files: 
+          'wintersmith/contents/js/modernizr.min.js': ['bower_components/modernizr/modernizr.js']
+
+
     # Yahoo's Smush.it for image compression
     smushit: 
       build: 
@@ -109,6 +118,7 @@ module.exports = (grunt) ->
  
   # Load NPM Tasks
   grunt.loadNpmTasks "grunt-css"
+  grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-smushit"
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-coffee"
@@ -122,4 +132,4 @@ module.exports = (grunt) ->
   grunt.registerTask "default", ["shell:preview"]
   
   # Release Task
-  grunt.registerTask "build", ["cssmin", "smushit:build", "sass:build", "coffee:join", "concat", "wintersmith:build"]
+  grunt.registerTask "build", ["cssmin", "uglify", "smushit:build", "sass:build", "coffee:join", "concat", "wintersmith:build"]
